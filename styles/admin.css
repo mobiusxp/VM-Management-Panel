@@ -1,0 +1,39 @@
+.vmlisting{
+	height: 50px;
+	border-bottom: 1px solid black;
+	text-align: center;
+	line-height: 50px;
+
+}
+
+.vmsearch{
+	height: 35px;
+}
+
+.vmlist{
+	border-right: 1px solid black;
+}
+
+.header{
+	background-color: #021E47;
+	height: 75px;
+	line-height: 75px;
+}
+
+.header p{
+	color: white;
+}
+
+.subheader{
+	text-align: right;
+}
+
+.subheader p{
+	padding-right:10px;
+	border-bottom: 1px solid black;
+}
+
+.selected{
+	background-color: #EFF0F1;
+}
+
