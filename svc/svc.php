@@ -1,7 +1,7 @@
 <?php
 
-  	// error_reporting(E_ALL);
-  	// ini_set('display_errors', 1);
+  	error_reporting(E_ALL);
+  	ini_set('display_errors', 1);
 
 	require('./lib/connector.php');
 	require("./listsvc.php");
@@ -46,6 +46,18 @@
 			case "restartVM":
 				$vm = getVMByName($conn, $_GET["name"]);
 				$result = restartVM($vm);
+				break;
+			case "stopVM":
+				$vm = getVMByName($conn, $_GET["name"]);
+				$result = stopVM($vm);
+				break;
+			case "startVM":
+				$vm = getVMByName($conn, $_GET["name"]);
+				$result = startVM($vm);
+				break;
+			case "killVM":
+				$vm = getVMByName($conn, $_GET["name"]);
+				$result = killVM($vm);
 				break;
 			case "test":
 				$result = test();

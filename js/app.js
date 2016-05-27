@@ -37,6 +37,62 @@ myapp.controller("vmDetailController", function vmDetailController($scope, $http
 	 $scope.$watch(function () { return Service.getVM();}, function (value) {
 	 		//console.log(value);
 	        $scope.vmname = value.vm;
+			$http({method:'GET', url:"./svc/svc.php?svc=getVMByName&name=" + value.vm + ""}).then(function successCallback(n){
+				if(n.data.state == 1){
+					$scope.vmstatus = "Online";
+				}else{
+					$scope.vmstatus = "Offline";
+				}
+			});
 	    });
+
+	 $scope.testFunc = function(){
+	 	console.log($scope.vmname);
+	 };
+
+	 $scope.startVM = function(){
+	 	$http({method:'GET', url:"./svc/svc.php?svc=startVM&name=" + $scope.vmname + ""}).then(function successCallback(n){
+	 		if(n.data){
+	 			$scope.vmstatus = "Online";
+	 			alert($scope.vmname + " was sucessfully started");
+	 		}else{
+	 			alert('Could not modify VM');
+	 		}
+		});
+	 };
+
+	 $scope.stopVM = function(){
+	 	$http({method:'GET', url:"./svc/svc.php?svc=stopVM&name=" + $scope.vmname + ""}).then(function successCallback(n){
+	 		if(n.data){
+	 			$scope.vmstatus = "Offline";
+	 			alert($scope.vmname + " was succesfully closed");
+	 		}else{
+	 			alert('Could not modify VM');
+	 		}
+		});
+	 };
+
+	 $scope.rebootVM = function(){
+	 	$http({method:'GET', url:"./svc/svc.php?svc=restartVM&name=" + $scope.vmname + ""}).then(function successCallback(n){
+	 		if(n.data){
+	 			$scope.vmstatus = "Offline";
+	 			alert($scope.vmname + " was succesfully restarted");
+	 		}else{
+	 			alert('Could not modify VM');
+	 		}
+		});
+
+	 };
+
+	 $scope.killVM = function(){
+	 	$http({method:'GET', url:"./svc/svc.php?svc=killVM&name=" + $scope.vmname + ""}).then(function successCallback(n){
+	 		if(n.data){
+	 			$scope.vmstatus = "Offline";
+	 			alert($scope.vmname + " was succesfully force closed");
+	 		}else{
+	 			alert('Could not modify VM');
+	 		}
+		});
+	 };
 });
 

@@ -37,9 +37,11 @@
 					<div class="row vmsearch">
 						<input type="text" ng-model="$ctrl.query" class="form-control" placeholder="Search">
 					</div>
+					<!--
 					<div class="row vmlisting">
 						<p> + Add a VM</p>
 					</div>
+					-->
 					<div ng-repeat="vm in vmlist | filter: $ctrl.query" class="row vmlisting {{selected}}" ng-click="setSelected(this);setVM(this)">
 							{{vm}}
 					</div>
@@ -48,8 +50,15 @@
 
 				<!--VM Detail window-->
 				<div ng-controller="vmDetailController" class="details col-md-9">
-				{{vmname}}
-				<p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></div>
+				<h1>{{vmname}}</h1>
+				<h2>{{vmstatus}}</h2>
+				<div>
+					<input type=button class="btn btn-primary" value="Start" ng-click="startVM()">
+					<input type=button class="btn btn-danger" value="Stop" ng-click="stopVM()">
+					<input type=button class="btn btn-warning" value="Restart" ng-click="rebootVM()">
+					<input type=button class="btn btn-danger" value="FORCE SHUTDOWN" ng-click="killVM()">
+				</div>
+			</div>
 		</div>
 	</div>
 	

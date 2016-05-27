@@ -2,7 +2,7 @@
 	// Connect to the server 
 
 	function connect(){
-		$conn = libvirt_connect("qemu:///system");
+		$conn = libvirt_connect("qemu:///system", false);
 		if($conn == false){
 			// Error handling
 		}else{
